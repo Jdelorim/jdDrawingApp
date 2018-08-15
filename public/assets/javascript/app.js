@@ -22,6 +22,11 @@ $(document).ready(function() {
 //--------p5-----------------
 function setup() {
     c = createCanvas(600,400);
+    
+    setTimeout(function() {
+        alphadog = 0;
+    console.log("alphadog: ",alphadog);
+   }, 1000);
    
 }
   
@@ -30,6 +35,8 @@ function draw() {
    background(0,0,0,alphadog);
    saveLocal();
    clearMe();
+   
+  
    
 }
 
