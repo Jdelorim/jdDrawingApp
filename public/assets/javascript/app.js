@@ -8,9 +8,10 @@ console.log(hello);
 //---------------------------------------------
 var didMove = false;
 var x = 0;
+var c;
 //------------------------------------
 function setup() {
-    createCanvas(600,400);
+    c = createCanvas(600,400);
 
 }
 //-------------------------------------------------    
@@ -31,7 +32,13 @@ function mouseDragged() {
    fill(255);
    noStroke();
    ellipse(mouseX, mouseY, x, x);
-   }
+}
+function keyPressed(){
+    if(keyCode === 32){
+        saveCanvas(c, "joshtest", "png")
+        console.log("you hit da space bar!");
+    }
+}
 
   
   
