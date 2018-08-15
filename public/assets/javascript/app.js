@@ -1,22 +1,39 @@
 $(document).ready(function() {
 var hello = "hello world";
 
-console.log("hi");
+console.log(hello);
 
 
 });
-
+//---------------------------------------------
+var didMove = false;
+var x = 0;
+//------------------------------------
 function setup() {
-    createCanvas(640,480);
-    }
+    createCanvas(600,400);
+
+}
+//-------------------------------------------------    
+function draw() {
+   background(0,0,0,0);
+
+
+}
+
+function mouseDragged() {
     
-    function draw() {
-        background(0,0,0,20);
-        if (mouseIsPressed) {
-            fill(0);
-          } else {
-            fill(255);
-          }
-          ellipse(mouseX, mouseY, 80, 80);
+   if(x<10) {
+         x++;
+    } else {
+         x=0;   
     }
+   
+   fill(255);
+   noStroke();
+   ellipse(mouseX, mouseY, x, x);
+   }
+
+  
+  
+
     
