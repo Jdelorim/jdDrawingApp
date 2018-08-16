@@ -3,7 +3,7 @@ var x = 0;
 var c;
 var saveME = false;
 var clearME = false;
-var alphadog = 255;
+var alphadog = 0;
 var firstTime = true;
 
 //-----------jquery-------
@@ -24,7 +24,7 @@ function setup() {
     c = createCanvas(600,400);
     
     setTimeout(function() {
-        alphadog = 0;
+    alphadog = 0;
     console.log("alphadog: ",alphadog);
    }, 1000);
    
