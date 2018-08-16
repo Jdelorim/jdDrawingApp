@@ -3,7 +3,7 @@ var x = 0;
 var c;
 var saveME = false;
 var clearME = false;
-var alphadog = 0;
+var alphadog = 255;
 var firstTime = true;
 
 //-----------jquery-------
@@ -35,6 +35,9 @@ function draw() {
    background(0,0,0,alphadog);
    saveLocal();
    clearMe();
+ // clearPromise();
+ // promiseHolder(); 
+
    
   
    
@@ -77,7 +80,26 @@ function clearMe() {
        
     }
 }
+/*
+function promiseHolder() {
+    if(clearME === true) {
+var clearPromise = new Promise(function(resolve, reject){
+    console.log("IN PROMISE")
+   
+   var c = console.log("alpha", alphadog);
+    resolve(c)
+})
+.then(function(){
+    
+   
+    
+    console.log(c);
 
+})
+clearME = false;
+    }
+}
+*/
   
   
 
