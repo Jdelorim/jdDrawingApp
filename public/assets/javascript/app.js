@@ -1,10 +1,12 @@
 
-var x = 0;
+var jsize = 0;
 var c;
 var saveME = false;
 var clearME = false;
 var alphadog = 255;
 var firstTime = true;
+var socket;
+var data;
 
 //-----------jquery-------
 $(document).ready(function() {
@@ -27,6 +29,12 @@ function setup() {
     alphadog = 0;
     console.log("alphadog: ",alphadog);
    }, 1000);
+
+   socket = io.connect("http://localhost:4040");
+   socket.on("mouse", function(data) {
+    console.log("got: ",data.x,"",data.y);
+    newDrawing(data);
+})
    
 }
   
@@ -38,25 +46,46 @@ function draw() {
  // clearPromise();
  // promiseHolder(); 
 
-   
+
   
    
 }
 
 function mouseDragged() {
-    
-    if(x<10) {
-         x++;
+  
+  
+    if(jsize<20) {
+         jsize++;
     } else {
-         x=0;   
+         jsize=0;   
     }
-   
+
+    data = {
+        x: mouseX,
+        y: mouseY,
+        jsize: jsize
+    };
+   // var data2 = "hello world";
+   socket.emit("mouse", data);
+  //  console.log(data);
+  console.log(data.x);
    fill(255);
    noStroke();
-   ellipse(mouseX, mouseY, x, x);
+   ellipse(mouseX, mouseY, jsize, jsize);
+  
 }
 
 //-----------my functions--------
+function newDrawing(data) {
+    fill(255);
+    noStroke();
+    ellipse(data.x, data.y, data.jsize, data.jsize);
+}
+
+
+
+
+
 function saveLocal() {
     if(saveME === true) {
         saveCanvas(c, "joshtest", "png")
