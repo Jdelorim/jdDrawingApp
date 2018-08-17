@@ -3,6 +3,7 @@ var app = express();
 
 
 var PORT = process.env.PORT || 4040;
+app.set("PORT",PORT);
  
 var server = app.listen(PORT,listening);
 
