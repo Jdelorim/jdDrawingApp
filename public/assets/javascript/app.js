@@ -29,9 +29,10 @@ function setup() {
     alphadog = 0;
     console.log("alphadog: ",alphadog);
    }, 1000);
-
+var port1 = "http://localhost:4040";
+var port2 = "process.env.PORT";
   // socket = io.connect( "http://localhost:4040");
-  socket = io.connect(process.env.PORT);
+  socket = io.connect(port2);
    socket.on("mouse", function(data) {
     console.log("got: ",data.x,"",data.y);
     newDrawing(data);
