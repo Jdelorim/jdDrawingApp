@@ -30,7 +30,8 @@ function setup() {
     console.log("alphadog: ",alphadog);
    }, 1000);
 
-   socket = io.connect("http://localhost:4040");
+  // socket = io.connect( "http://localhost:4040");
+  socket = io.connect(process.env.PORT);
    socket.on("mouse", function(data) {
     console.log("got: ",data.x,"",data.y);
     newDrawing(data);
