@@ -1,3 +1,4 @@
+"use strict";
 
 var jsize = 0;
 var c;
@@ -32,9 +33,10 @@ function setup() {
 var port1 = "http://localhost:4040";
 var port2 = "process.env.PORT";
   // socket = io.connect( "http://localhost:4040");
-  socket = io.connect(port2);
+  socket = io.connect();
    socket.on("mouse", function(data) {
     console.log("got: ",data.x,"",data.y);
+
     newDrawing(data);
 })
    
@@ -79,7 +81,7 @@ function mouseDragged() {
 
 //-----------my functions--------
 function newDrawing(data) {
-    fill(255);
+    fill(255,100,100);
     noStroke();
     ellipse(data.x, data.y, data.jsize, data.jsize);
 }

@@ -24,8 +24,9 @@ function newConnection(socket) {
     console.log("new connection: ",socket.id);
     socket.on("mouse",
     function (data) {
-   //io.sockets.emit("mouse",data);
-  
+   io.sockets.emit("mouse",data);
+   // socket.broadcast.emit("port",process.env.PORT);   
+  // console.log(process.env.PORT); 
     socket.broadcast.emit("mouse", data);
     console.log(data);
     });
