@@ -4,22 +4,12 @@ var path = require("path");
 module.exports = function(app) {
     
     app.get("/", function (req,res) {
-       res.sendFile(path.join(__dirname, "../public/index.html"));
+      // res.sendFile(path.join(__dirname, "../public/index.html"));
+      res.render("index",{ title:"i hate handlebars"});
+
     });
     
     app.get("/gallery", function (req,res) {
-       res.sendFile(path.join(__dirname, "../public/gallery.html"));
+        res.render("gallery",{  layout: "glayout", title:"i hate handlebars gallery"});
     });
-
-  
-
-    
-
-    
-
-    /*
-    app.get("/gallery", function (req,res) {
-     res.sendFile(path.join(__dirname, "../public/gallery.html"));
-    }); 
-    */
 };
