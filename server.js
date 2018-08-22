@@ -1,17 +1,33 @@
 var express = require("express");
+var bodyParser = require("body-parser");
 var app = express();
 
 
 var PORT = process.env.PORT || 4040;
-app.set("PORT",PORT);
- 
+//app.set("PORT",PORT);
+
+app.use(bodyParser.urlencoded({ extended: true}));
+app.use(bodyParser.json());
+
+
+
+
+app.use(express.static("public"));
+require("./routing/htmlRoutes")(app);
+/*
+app.get("*",function (req,res) {
+    res.sendFile(path.join(_dirname, "../public/index.html"));
+});
+
+app.get("/gallery",function (req,res) {
+ res.sendFile(path.join(_dirname, "../public/gallery.html"));
+});
+*/
 var server = app.listen(PORT,listening);
 
 function listening() {
     console.log("listening on:", PORT);
 }
-
-app.use(express.static("public"));
 
 //-------socket.io-----------------
 

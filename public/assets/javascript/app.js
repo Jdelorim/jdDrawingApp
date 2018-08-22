@@ -11,11 +11,11 @@ var data;
 
 //-----------jquery-------
 $(document).ready(function() {
-   
-    var hello = "hello world";
-  
-    $("#jdSave").on("click", function() {
-        saveME = true;
+
+var hello = "hello world";
+
+$("#jdSave").on("click", function() {
+    saveME = true;
     });
     $("#jdClear").on("click",function(){
         clearME = true; 
@@ -33,12 +33,11 @@ function setup() {
 var port1 = "http://localhost:4040";
 var port2 = "process.env.PORT";
   // socket = io.connect( "http://localhost:4040");
-  socket = io.connect();
+   socket = io.connect();
    socket.on("mouse", function(data) {
     console.log("got: ",data.x,"",data.y);
-
     newDrawing(data);
-})
+    });
    
 }
   
@@ -47,17 +46,9 @@ function draw() {
    background(0,0,0,alphadog);
    saveLocal();
    clearMe();
- // clearPromise();
- // promiseHolder(); 
-
-
-  
-   
 }
 
 function mouseDragged() {
-  
-  
     if(jsize<20) {
          jsize++;
     } else {
@@ -69,13 +60,14 @@ function mouseDragged() {
         y: mouseY,
         jsize: jsize
     };
-   // var data2 = "hello world";
+   
    socket.emit("mouse", data);
-  //  console.log(data);
-  console.log(data.x);
-   fill(255);
-   noStroke();
-   ellipse(mouseX, mouseY, jsize, jsize);
+ 
+ 
+  // fill(255);
+ //  noStroke();
+ //  ellipse(mouseX, mouseY, jsize, jsize);
+  
   
 }
 
@@ -113,26 +105,7 @@ function clearMe() {
        
     }
 }
-/*
-function promiseHolder() {
-    if(clearME === true) {
-var clearPromise = new Promise(function(resolve, reject){
-    console.log("IN PROMISE")
-   
-   var c = console.log("alpha", alphadog);
-    resolve(c)
-})
-.then(function(){
-    
-   
-    
-    console.log(c);
 
-})
-clearME = false;
-    }
-}
-*/
   
   
 
