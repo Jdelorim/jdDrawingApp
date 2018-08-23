@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: true}));
 app.use(bodyParser.json());
 
 
-var publicPath = path.join(__dirname,"../public");
+
 
 app.use(express.static("public"));
 require("./routing/htmlRoutes")(app);
@@ -42,8 +42,15 @@ function newConnection(socket) {
     socket.broadcast.emit("mouse", data);
     console.log(data);
     });
+    socket.on('disconnect', function () {
+        console.log(socket.id," disconnected!");
+    });
+   
+};
 
-}
+
+
+
 
 
 

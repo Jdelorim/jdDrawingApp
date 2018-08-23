@@ -25,13 +25,13 @@ $("#jdSave").on("click", function() {
 //--------p5-----------------
 function setup() {
     c = createCanvas(600,400);
-    
+    c.position(300, 200);
     setTimeout(function() {
     alphadog = 0;
     console.log("alphadog: ",alphadog);
    }, 1000);
-var port1 = "http://localhost:4040";
-var port2 = "process.env.PORT";
+    var port1 = "http://localhost:4040";
+    var port2 = "process.env.PORT";
   // socket = io.connect( "http://localhost:4040");
    socket = io.connect();
    socket.on("mouse", function(data) {
@@ -62,13 +62,6 @@ function mouseDragged() {
     };
    
    socket.emit("mouse", data);
- 
- 
-  // fill(255);
- //  noStroke();
- //  ellipse(mouseX, mouseY, jsize, jsize);
-  
-  
 }
 
 //-----------my functions--------

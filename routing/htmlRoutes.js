@@ -10,6 +10,6 @@ module.exports = function(app) {
     });
     
     app.get("/gallery", function (req,res) {
-        res.render("gallery",{  layout: "glayout", title:"i hate handlebars gallery"});
+        res.render("gallery",{  title:"JD picture gallery"});
     });
 };

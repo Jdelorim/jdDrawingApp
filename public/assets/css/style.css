@@ -1,13 +1,14 @@
-body{
-    background: black;
-}
 
-
-.jheadergallery{
-    background: red;
+html,body{
+    height:100%;
+    background:grey;
+    color: white;
 }
 
 .jheader-content{
-    color: white;
+ /*   border: solid 2px black;*/
+    padding-left: 40%;
+    padding-top: 50px;
+
 }
 
