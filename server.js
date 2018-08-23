@@ -18,15 +18,7 @@ var publicPath = path.join(__dirname,"../public");
 
 app.use(express.static("public"));
 require("./routing/htmlRoutes")(app);
-/*
-app.get("*",function (req,res) {
-    res.sendFile(path.join(_dirname, "../public/index.html"));
-});
 
-app.get("/gallery",function (req,res) {
- res.sendFile(path.join(_dirname, "../public/gallery.html"));
-});
-*/
 var server = app.listen(PORT,listening);
 
 function listening() {
