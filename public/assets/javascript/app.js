@@ -1,9 +1,14 @@
 "use strict";
 
-var jsize = 0;
+var paintTools = {
+    jsize: 3,
+    hue: 1,
+    sat: 1,
+    lum: 0.5
+}
 var c;
-var saveME = false;
-var clearME = false;
+var saveMe = false;
+var clearMe = false;
 var alphadog = 255;
 var firstTime = true;
 var socket;
@@ -11,21 +16,19 @@ var data;
 
 //-----------jquery-------
 $(document).ready(function() {
-
-var hello = "hello world";
-
-$("#jdSave").on("click", function() {
-    saveME = true;
+     $("#jdSave").on("click", function() {
+    saveMe = true;
     });
-    $("#jdClear").on("click",function(){
-        clearME = true; 
-        console.log("clearME: ", clearME);
+    
+     $("#jdClear").on("click",function(){
+        clearMe = true; 
+        console.log("clearME: ", clearMe);
     });
 });
 //--------p5-----------------
 function setup() {
     c = createCanvas(600,400);
-    c.position(300, 200);
+    c.position(300, 150);
     setTimeout(function() {
     alphadog = 0;
     console.log("alphadog: ",alphadog);
@@ -35,9 +38,10 @@ function setup() {
   // socket = io.connect( "http://localhost:4040");
    socket = io.connect();
    socket.on("mouse", function(data) {
-    console.log("got: ",data.x,"",data.y);
+  //  console.log("got: ",data.x,"",data.y);
     newDrawing(data);
     });
+    paintTools.jsize = 2;
    
 }
   
@@ -45,20 +49,14 @@ function draw() {
   
    background(0,0,0,alphadog);
    saveLocal();
-   clearMe();
+   clearCanvas();
 }
 
 function mouseDragged() {
-    if(jsize<20) {
-         jsize++;
-    } else {
-         jsize=0;   
-    }
-
-    data = {
+  data = {
         x: mouseX,
         y: mouseY,
-        jsize: jsize
+        jsize: paintTools.jsize
     };
    
    socket.emit("mouse", data);
@@ -76,25 +74,25 @@ function newDrawing(data) {
 
 
 function saveLocal() {
-    if(saveME === true) {
+    if(saveMe === true) {
         saveCanvas(c, "joshtest", "png")
         console.log("you saved the picture!");
-        saveME = false;
+        saveMe = false;
     }
 }
 
-function clearMe() {
+function clearCanvas() {
     
-    if(clearME === true) {
+    if(clearMe === true) {
         
         alphadog = 255;
 
-        console.log("you hit clear, alphadog:", alphadog);
+      //  console.log("you hit clear, alphadog:", alphadog);
         setTimeout(function() {
         alphadog = 0;
-        console.log("alphadog: ",alphadog);
+     //   console.log("alphadog: ",alphadog);
        }, 1000);
-        clearME = false;
+        clearMe = false;
        
     }
 }
