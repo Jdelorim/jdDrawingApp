@@ -9,7 +9,7 @@
     "express-handlebars": "^3.0.0",
     "nodemon": "^1.18.3",
     "path": "^0.12.7",
-    "socket.io": "^2.1.1"
+    "socket.io": "^2.5.0"
   },
   "devDependencies": {
     "eslint": "^5.4.0"
